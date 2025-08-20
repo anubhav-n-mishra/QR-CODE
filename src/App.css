@@ -1,38 +1,160 @@
+:root {
+  --primary-color: #61dafb;
+  --background-dark: #121212;
+  --background-light: #ffffff;
+  --text-dark: #e0e0e0;
+  --text-light: #222222;
+  --component-bg-dark: #1e1e1e;
+  --component-bg-light: #f0f0f0;
+  --border-dark: #333;
+  --border-light: #ddd;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.App[data-theme='dark'] {
+  --background-primary: var(--background-dark);
+  --background-secondary: var(--component-bg-dark);
+  --text-primary: var(--text-dark);
+  --text-secondary: #bbbbbb;
+  --border-color: var(--border-dark);
+}
+
+.App[data-theme='light'] {
+  --background-primary: var(--background-light);
+  --background-secondary: var(--component-bg-light);
+  --text-primary: var(--text-light);
+  --text-secondary: #555555;
+  --border-color: var(--border-light);
+}
+
 .App {
+  background-color: var(--background-primary);
+  color: var(--text-primary);
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+  padding: 2rem;
+  min-height: 100vh;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  margin-bottom: 2rem;
+}
+
+.App-header h1 {
+  font-size: 2.5rem;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.App-header p {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+}
+
+.main-content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 2rem;
 }
 
-.App-link {
-  color: #61dafb;
+/* Input Section */
+.input-section {
+  width: 100%;
+  max-width: 500px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+textarea {
+  width: 100%;
+  height: 120px;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background-color: var(--background-secondary);
+  color: var(--text-primary);
+  font-size: 1rem;
+  resize: vertical;
+  box-sizing: border-box;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(97, 218, 251, 0.2);
+}
+
+/* QR Code Section */
+.qr-code-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.qr-code-container {
+  background-color: #ffffff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.download-btn {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #121212;
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.download-btn:hover {
+  background-color: #88eaff;
+  transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .App {
+    padding: 1rem;
   }
-  to {
-    transform: rotate(360deg);
+
+  .App-header h1 {
+    font-size: 2rem;
+  }
+
+  .App-header p {
+    font-size: 1rem;
+  }
+
+  .main-content {
+    gap: 1.5rem;
+  }
+
+  textarea {
+    height: 100px;
   }
 }
+
+@media (max-width: 480px) {
+  .App-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .download-btn {
+    width: 100%;
+    padding: 0.8rem;
+  }
+}
+
