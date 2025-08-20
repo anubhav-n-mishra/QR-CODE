@@ -158,3 +158,38 @@ textarea:focus {
   }
 }
 
+/* Footer Styles */
+.app-footer {
+  margin-top: 3rem;
+  padding: 1.5rem;
+  border-top: 1px solid var(--border-color);
+  background-color: var(--background-secondary);
+  text-align: center;
+}
+
+.app-footer p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+/* Theme Toggle Button */
+.theme-toggle-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+  background-color: var(--background-secondary);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle-btn:hover {
+  background-color: var(--primary-color);
+  color: #121212;
+  border-color: var(--primary-color);
+}
+

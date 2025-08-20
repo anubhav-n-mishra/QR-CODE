@@ -32,8 +32,7 @@ const Explanation = ({ text }) => {
       className="explanation-container"
       variants={containerVariants}
       initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
+      animate="visible"
     >
       <h2>How a QR Code is Made</h2>
 
@@ -42,7 +41,10 @@ const Explanation = ({ text }) => {
         <h3>1. Encoding Data</h3>
         <p>First, your input text is converted into the most efficient format (e.g., numeric, alphanumeric, or binary). Then, it's translated into a sequence of bits (0s and 1s).</p>
         <div className="binary-representation">
-          {text.split('').map(char => char.charCodeAt(0).toString(2).padStart(8, '0')).join(' ')}
+          {text && text.length > 0 ? 
+            text.split('').map((char, index) => char.charCodeAt(0).toString(2).padStart(8, '0')).join(' ') :
+            '01001000 01100101 01101100 01101100 01101111' // Default "Hello" in binary
+          }
         </div>
       </motion.div>
 
@@ -51,7 +53,12 @@ const Explanation = ({ text }) => {
         <h3>2. Error Correction</h3>
         <p>Next, Reed-Solomon error correction codewords are added. These are extra bits that allow the QR code to be read even if it's partially damaged or obscured.</p>
         <div className="binary-representation">
-          <span className="data-bits">{text.split('').map(char => char.charCodeAt(0).toString(2).padStart(8, '0')).join(' ')}</span>
+          <span className="data-bits">
+            {text && text.length > 0 ? 
+              text.split('').map((char, index) => char.charCodeAt(0).toString(2).padStart(8, '0')).join(' ') :
+              '01001000 01100101 01101100 01101100 01101111'
+            }
+          </span>
           <span className="error-bits">{errorCodewords}</span>
         </div>
       </motion.div>

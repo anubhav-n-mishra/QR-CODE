@@ -35,8 +35,7 @@ const LearnMore = () => {
     <motion.div 
       className="learn-more-container"
       initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
+      animate="visible"
       transition={{ staggerChildren: 0.2 }}
     >
       <h2 className="learn-more-title">Learn More About QR Codes</h2>
