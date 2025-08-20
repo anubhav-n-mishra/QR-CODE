@@ -1,95 +1,180 @@
 :root {
-  --primary-color: #61dafb;
-  --background-dark: #121212;
+  --primary-color: #667eea;
+  --secondary-color: #764ba2;
+  --accent-color: #f093fb;
+  --success-color: #10b981;
+  --background-dark: #0f172a;
   --background-light: #ffffff;
-  --text-dark: #e0e0e0;
-  --text-light: #222222;
-  --component-bg-dark: #1e1e1e;
-  --component-bg-light: #f0f0f0;
-  --border-dark: #333;
-  --border-light: #ddd;
+  --text-dark: #e2e8f0;
+  --text-light: #1e293b;
+  --component-bg-dark: #1e293b;
+  --component-bg-light: #f8fafc;
+  --border-dark: #334155;
+  --border-light: #e2e8f0;
+  --shadow-light: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-medium: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-large: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --gradient-primary: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  --gradient-accent: linear-gradient(135deg, var(--accent-color) 0%, var(--primary-color) 100%);
 }
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: background-color 0.3s, color 0.3s;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  background: var(--background-primary);
+}
+
+* {
+  box-sizing: border-box;
 }
 
 .App[data-theme='dark'] {
   --background-primary: var(--background-dark);
   --background-secondary: var(--component-bg-dark);
   --text-primary: var(--text-dark);
-  --text-secondary: #bbbbbb;
+  --text-secondary: #94a3b8;
   --border-color: var(--border-dark);
+  --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
 }
 
 .App[data-theme='light'] {
   --background-primary: var(--background-light);
   --background-secondary: var(--component-bg-light);
   --text-primary: var(--text-light);
-  --text-secondary: #555555;
+  --text-secondary: #64748b;
   --border-color: var(--border-light);
+  --shadow: var(--shadow-medium);
 }
 
 .App {
-  background-color: var(--background-primary);
+  background: var(--background-primary);
   color: var(--text-primary);
   text-align: center;
-  padding: 2rem;
   min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.App::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--gradient-primary);
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: -1;
 }
 
 .App-header {
-  margin-bottom: 2rem;
+  padding: 3rem 2rem 2rem;
+  background: var(--gradient-primary);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.App-header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(180deg); }
 }
 
 .App-header h1 {
-  font-size: 2.5rem;
-  color: var(--text-primary);
-  margin-bottom: 0.5rem;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  margin: 0 0 1rem 0;
+  background: linear-gradient(45deg, #ffffff, #f0f9ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  z-index: 1;
+  letter-spacing: -0.02em;
 }
 
 .App-header p {
-  font-size: 1.1rem;
-  color: var(--text-secondary);
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 600px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  font-weight: 400;
+  line-height: 1.6;
 }
 
 .main-content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  gap: 3rem;
+  padding: 3rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
 }
 
 /* Input Section */
 .input-section {
   width: 100%;
-  max-width: 500px;
+  max-width: 600px;
+  position: relative;
+}
+
+.input-label {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+  text-align: left;
 }
 
 textarea {
   width: 100%;
-  height: 120px;
-  padding: 1rem;
-  border-radius: 8px;
-  border: 1px solid var(--border-color);
-  background-color: var(--background-secondary);
+  height: 140px;
+  padding: 1.25rem;
+  border-radius: 16px;
+  border: 2px solid var(--border-color);
+  background: var(--background-secondary);
   color: var(--text-primary);
   font-size: 1rem;
+  font-family: inherit;
   resize: vertical;
   box-sizing: border-box;
-  transition: border-color 0.3s, box-shadow 0.3s;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-light);
+  line-height: 1.5;
 }
 
 textarea:focus {
   outline: none;
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(97, 218, 251, 0.2);
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1), var(--shadow-medium);
+  transform: translateY(-2px);
+}
+
+textarea::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.7;
 }
 
 /* QR Code Section */
@@ -97,64 +182,233 @@ textarea:focus {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
+  gap: 2rem;
+  padding: 2rem;
+  background: var(--background-secondary);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+  position: relative;
+  overflow: hidden;
+}
+
+.qr-code-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-primary);
 }
 
 .qr-code-container {
-  background-color: #ffffff;
-  padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: var(--shadow-large);
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.qr-code-container:hover {
+  transform: translateY(-4px);
+}
+
+.qr-code-container::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: var(--gradient-primary);
+  border-radius: 22px;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.qr-code-container:hover::after {
+  opacity: 1;
 }
 
 .download-btn {
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  font-weight: bold;
-  color: #121212;
-  background-color: var(--primary-color);
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: white;
+  background: var(--gradient-primary);
   border: none;
-  border-radius: 8px;
+  border-radius: 12px;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-medium);
+  position: relative;
+  overflow: hidden;
+}
+
+.download-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.download-btn:hover::before {
+  left: 100%;
 }
 
 .download-btn:hover {
-  background-color: #88eaff;
   transform: translateY(-2px);
+  box-shadow: var(--shadow-large);
+}
+
+.download-btn:active {
+  transform: translateY(0);
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .App {
-    padding: 1rem;
-  }
-
-  .App-header h1 {
-    font-size: 2rem;
-  }
-
-  .App-header p {
-    font-size: 1rem;
+  .App-header {
+    padding: 2rem 1rem 1.5rem;
   }
 
   .main-content {
-    gap: 1.5rem;
+    padding: 2rem 1rem;
+    gap: 2rem;
+  }
+
+  .qr-code-section {
+    padding: 1.5rem;
+    margin: 0 1rem;
+  }
+
+  .qr-code-container {
+    padding: 1.5rem;
   }
 
   textarea {
-    height: 100px;
-  }
-}
-
-@media (max-width: 480px) {
-  .App-header h1 {
-    font-size: 1.8rem;
+    height: 120px;
+    padding: 1rem;
   }
 
   .download-btn {
     width: 100%;
-    padding: 0.8rem;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .App-header {
+    padding: 1.5rem 1rem;
+  }
+
+  .main-content {
+    padding: 1.5rem 0.5rem;
+  }
+
+  .qr-code-section {
+    margin: 0 0.5rem;
+    padding: 1rem;
+  }
+
+  .qr-code-container {
+    padding: 1rem;
+  }
+}
+
+/* Loading Animation */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.loading {
+  animation: pulse 2s infinite;
+}
+
+/* Success Animation */
+@keyframes success {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.success-animation {
+  animation: success 0.3s ease-in-out;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus indicators for accessibility */
+button:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-color);
+}
+
+/* Selection styling */
+::selection {
+  background: var(--primary-color);
+  color: white;
+}
+
+::-moz-selection {
+  background: var(--primary-color);
+  color: white;
+}
+
+/* Remove focus outline for mouse users */
+.js-focus-visible :focus:not(.focus-visible) {
+  outline: none;
+}
+
+/* Print styles */
+@media print {
+  .theme-toggle-btn {
+    display: none;
+  }
+  
+  .App::before {
+    display: none;
+  }
+  
+  .App-header::before {
+    display: none;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
 

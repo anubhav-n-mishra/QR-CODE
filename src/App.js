@@ -37,7 +37,11 @@ function App() {
 
       <main className="main-content">
         <div className="input-section">
+          <label htmlFor="qr-input" className="input-label">
+            📝 Enter your content
+          </label>
           <textarea
+            id="qr-input"
             value={text}
             onChange={(e) => setText(e.target.value)}
             placeholder="Enter text, URL, or any content to generate a QR code..."
@@ -56,7 +60,7 @@ function App() {
               />
             </div>
             <button onClick={downloadQRCode} className="download-btn">
-              Download QR Code
+              📥 Download QR Code
             </button>
           </div>
         )}
