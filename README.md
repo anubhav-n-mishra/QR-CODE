@@ -1,22 +1,28 @@
-# QR Code Genie
+# QR Code Explainer
 
-QR Code Genie is a modern, interactive web application built with React that allows users to generate, customize, and understand QR codes in real-time. It provides a seamless user experience with a step-by-step visual explainer, dark/light mode, and mobile responsiveness.
+QR Code Explainer is a modern, interactive web application built with React that allows users to generate, customize, and understand QR codes in real-time. It provides a comprehensive user experience with step-by-step visual explanation, dark/light mode, social integration, and contact functionality.
 
-![QR Code Genie Screenshot](<SCREENSHOT_URL_PLACEHOLDER>) <!-- Add a screenshot of the app here -->
+![QR Code Explainer Screenshot](<SCREENSHOT_URL_PLACEHOLDER>) <!-- Add a screenshot of the app here -->
 
-## Features
+## ✨ Features
 
-- **Real-Time Generation**: Instantly generates a QR code as you type.
-- **Downloadable Codes**: Download your QR code as a high-quality PNG.
-- **Visual Explainer**: A step-by-step animated guide to how QR codes are constructed.
-- **Dark/Light Mode**: Switch between themes for comfortable viewing.
-- **Fully Responsive**: Works beautifully on desktops, tablets, and mobile devices.
+- **Real-Time Generation**: Instantly generates a QR code as you type
+- **Side-by-Side Layout**: View QR code and explanation simultaneously
+- **Downloadable Codes**: Download your QR code as a high-quality PNG
+- **Visual Explainer**: Step-by-step animated guide to QR code construction
+- **Dark/Light Mode**: Switch between themes for comfortable viewing
+- **Contact Form**: EmailJS-powered contact form for user support
+- **Social Integration**: Direct links to GitHub, LinkedIn, and email
+- **Educational Content**: Learn about QR code technology and history
+- **Fully Responsive**: Works beautifully on desktops, tablets, and mobile devices
+- **Modern UI**: Professional design with smooth animations
 
-## Tech Stack
+## 🛠 Tech Stack
 
-- **React**: A JavaScript library for building user interfaces.
-- **Framer Motion**: For smooth animations and transitions.
-- **qrcode.react**: A React component to generate QR codes.
+- **React**: A JavaScript library for building user interfaces
+- **Framer Motion**: For smooth animations and transitions
+- **qrcode.react**: A React component to generate QR codes
+- **EmailJS**: For contact form functionality
 
 ## Getting Started
 

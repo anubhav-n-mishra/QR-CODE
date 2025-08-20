@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders QR Code Genie title', () => {
+test('renders QR Code Explainer title', () => {
   render(<App />);
-  const titleElement = screen.getByText(/QR Code Genie/i);
+  const titleElement = screen.getByText(/QR Code Explainer/i);
   expect(titleElement).toBeInTheDocument();
 });
 
@@ -15,6 +15,6 @@ test('renders input textarea', () => {
 
 test('renders theme toggle button', () => {
   render(<App />);
-  const themeButton = screen.getByText(/Switch to Dark Mode/i);
+  const themeButton = screen.getByText(/Dark Mode/i);
   expect(themeButton).toBeInTheDocument();
 });
